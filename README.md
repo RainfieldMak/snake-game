@@ -14,8 +14,6 @@
 
 
 #### Preview
-![image](https://github.com/RainfieldMak/snake-game/assets/130533588/771fd996-9d27-4024-9023-7d0cbfee53c4)
+![image](https://github.com/RainfieldMak/snake-game/assets/130533588/eb9dd956-872b-4a44-bf7b-e3f57d39e10e)
 
-
-![image](https://github.com/RainfieldMak/snake-game/assets/130533588/c55d0665-fb82-4ee0-a479-eaf853224bba)
 
