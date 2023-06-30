@@ -40,11 +40,9 @@ class Apple:
     
 
     
-
+    #change to pre-load and save to another environment to reduce time for loading ?
     def load_apple_image(self):
 
-
-  
         current_file = __file__
         parent_directory = os.path.dirname(current_file)
         file_path = os.path.join(parent_directory, "..", "assets", "apple.jpg")

@@ -11,9 +11,10 @@ def main():
     FPS = 60
     WHITE = (255, 255, 255)
     MOVEMENT_SPEED= 10
+    MENU_SIZE=(300,300)
 
     pygame.init()
-    pygame.display.set_caption("minimal program")
+    pygame.display.set_caption("Snake Game")
     screen = pygame.display.set_mode(SCREEN_SIZE)
     clock = pygame.time.Clock()
 
@@ -21,7 +22,7 @@ def main():
 
     running = True
  
-    main_=Items.Main(screen, SCREEN_SIZE,MOVEMENT_SPEED)
+    main_=Items.Main(screen, SCREEN_SIZE,MOVEMENT_SPEED,  MENU_SIZE)
 
 
     SCREEN_UPDATE=pygame.USEREVENT
@@ -30,11 +31,24 @@ def main():
     while running:
         clock.tick(FPS)
 
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
             if event.type == SCREEN_UPDATE:
-                main_.update()
+
+                if  main_.get_pause()== False:
+                   
+                   #player lose
+                   if  main_.update() == False:
+                        
+                        #pause game and reset
+                        main_.set_pause(True)
+                        main_.reset()
+                         
+                
+
+            #Keyboard arrow input
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP and main_.snake.get_direction().y !=  MOVEMENT_SPEED :
                     main_.snake.set_direction(Vector2(0,MOVEMENT_SPEED*-1))
@@ -47,6 +61,11 @@ def main():
 
                 if event.key == pygame.K_RIGHT and main_.snake.get_direction().x !=  (MOVEMENT_SPEED *-1) :
                     main_.snake.set_direction(Vector2(MOVEMENT_SPEED,0))
+           
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if main_.menu.start_button.onlick():
+                    main_.start()
+                
 
 
         screen.fill(WHITE)    
